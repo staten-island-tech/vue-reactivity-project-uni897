@@ -1,9 +1,10 @@
 <template>
   <h1>Duck Racing</h1>
   <div>
+    <RouterLink to="/player1">yogurt</RouterLink>
     <button>Play</button>
-    <button>Customize Player 1</button>
-    <button>Customize Player 2</button>
+    <button><RouterLink to="/player1">Player 1</RouterLink></button>
+    <button><RouterLink to="/player2">Player 2</RouterLink></button>
     <Duck width="100px" height="100px" class="duck" :skincolor="skinColor"></Duck>
     <button @click="changeColor">Change</button>
   </div>
