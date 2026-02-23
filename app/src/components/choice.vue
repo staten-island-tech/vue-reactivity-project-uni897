@@ -1,27 +1,21 @@
 <template>
-    <button @click="clicked" class="color">
-        <h3>{{ props.color.name }}</h3>
+    <button @click="emit('select', item)" class="choice">
+        <h3>{{ item.name }}</h3>
     </button>
 </template>
 
 <script setup>
-const props = defineProps({
-    color:{
-        type:Object,
+defineProps({
+    item:{
+        type: Object,
         required: true,
     },
 })
-
 const emit = defineEmits(["select"])
-function clicked(){
-    console.log(props.color.name)
-    console.log(props.color.color)
-    emit("select", props.color)
-}
 </script>
 
 <style scoped>
-.color{
+.choice{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
