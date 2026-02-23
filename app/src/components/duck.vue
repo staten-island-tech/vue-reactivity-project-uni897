@@ -20,10 +20,10 @@
 
 <script setup>
 defineProps({
-    width: { type: [Number, String], default: 800 },
-    height: { type: [Number, String], default: 800 },
-    class: { type: String, default: '' },
-    skincolor: { type: String, default: '#FFE67B' },
+    width: { type: [Number, String] },
+    height: { type: [Number, String] },
+    class: { type: String },
+    skincolor: { type: String },
 })
 </script>
 

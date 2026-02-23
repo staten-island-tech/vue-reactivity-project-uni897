@@ -11,9 +11,12 @@ const props = defineProps({
         required: true,
     },
 })
+
+const emit = defineEmits(["select"])
 function clicked(){
     console.log(props.color.name)
     console.log(props.color.color)
+    emit("select", props.color)
 }
 </script>
 

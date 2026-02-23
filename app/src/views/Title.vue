@@ -1,7 +1,6 @@
 <template>
   <h1>Duck Racing</h1>
   <div>
-    <RouterLink to="/player1">yogurt</RouterLink>
     <button>Play</button>
     <button><RouterLink to="/player1">Player 1</RouterLink></button>
     <button><RouterLink to="/player2">Player 2</RouterLink></button>
@@ -12,19 +11,11 @@
 
 <script setup>
 import Duck from '@/components/duck.vue';
+import { players, updateColor } from "@/state/players.js"
 import { ref } from 'vue';
-const toggled = ref(false)
-const skinColor = ref("#FFC0CB")
 
-function changeColor(){
-  if(!toggled.value){
-    skinColor.value = "#FF0000"
-    toggled.value = true
-  }else{
-    skinColor.value = "#FFC0CB"
-    toggled.value = false
-  }
-}
+const skinColor = ref("#FFE67B")
+skinColor.value = players[0].color
 </script>
 
 <style scoped>
