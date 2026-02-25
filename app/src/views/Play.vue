@@ -1,6 +1,8 @@
 <template>
     <div>
         <button> <RouterLink to="/">Back</RouterLink> </button>
+        <h1>{{ min }}:{{ sec }}:{{ milisec }}</h1>
+        <button @click="increment">Xlixk</button>
         <Duck :pos="pos1" width="100px" height="100px" class="p1" :skincolor="players[0].color"></Duck>
         <Duck :pos="pos2" width="100px" height="100px" class="p2" :skincolor="players[1].color"></Duck>
         <h2 v-if="pos1 > 1200">Player 1 wins!</h2>
@@ -12,13 +14,25 @@
 import { players } from '@/state/players.js'
 import Duck from '@/components/duck.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
+//time
 
+const milisec = ref(0)
+const sec = ref(0)
+const min = ref(0)
+function increment(){
+    sec.value ++
+    if(sec.value >= 60){
+        sec.value = 0
+        min.value ++
+    }
+}
+//movement
 const pos1 = ref(0)
 const pos2 = ref(0)
 let d = false
 let arr = false
 
-const step = 50
+const step = 10
 
 function keyPress(e) {
   if(e.key === 'd' && !d){
