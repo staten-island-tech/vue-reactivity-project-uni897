@@ -16,12 +16,8 @@ const emit = defineEmits(["select"])
 
 <style scoped>
 .choice{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 200px;
-    width: 150px;
-    border: 3px solid black;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
 }
 </style>

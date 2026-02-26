@@ -20,7 +20,11 @@ const milisec = ref(0)
 const sec = ref(0)
 const min = ref(0)
 function increment(){
-    sec.value ++
+    milisec.value ++
+    if(milisec.value >= 1000){
+        milisec.value = 0
+        sec.value ++
+    }
     if(sec.value >= 60){
         sec.value = 0
         min.value ++

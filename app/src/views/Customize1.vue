@@ -2,6 +2,8 @@
     <div>
         <button> <RouterLink to="/">Back</RouterLink> </button>
         <Duck width="100px" height="100px" class="p1" :skincolor="players[0].color"></Duck>
+    </div>
+    <div class="choices">
         <choice v-for="color in colors" :key="color.name" :item="color" @select="updateStats(1, color.color)"/>
     </div>
 </template>
@@ -26,5 +28,10 @@ const colors = [
 </script>
 
 <style scoped>
-
+.choices{
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    column-gap: 10px;
+    float: right;
+}
 </style>
