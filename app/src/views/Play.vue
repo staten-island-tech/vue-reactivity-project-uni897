@@ -19,7 +19,10 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const milisec = ref(0)
 const sec = ref(0)
 const min = ref(0)
-function increment(){
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function increment(){
     milisec.value ++
     if(milisec.value >= 1000){
         milisec.value = 0
@@ -30,6 +33,12 @@ function increment(){
         min.value ++
     }
 }
+while(true){
+    increment()
+    await sleep(1000)
+}
+
+
 //movement
 const pos1 = ref(0)
 const pos2 = ref(0)
