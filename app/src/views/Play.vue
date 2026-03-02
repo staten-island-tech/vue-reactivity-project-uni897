@@ -2,7 +2,7 @@
     <div>
         <button> <RouterLink to="/">Back</RouterLink> </button>
         <h1>{{ min }}:{{ sec }}:{{ milisec }}</h1>
-        <button @click="increment">Xlixk</button>
+        <button @click="click">Start</button>
         <Duck :pos="pos1" width="100px" height="100px" class="p1" :skincolor="players[0].color"></Duck>
         <Duck :pos="pos2" width="100px" height="100px" class="p2" :skincolor="players[1].color"></Duck>
         <h2 v-if="pos1 > 1200">Player 1 wins!</h2>
@@ -16,12 +16,32 @@ import Duck from '@/components/duck.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
 //time
 
-const milisec = ref(0)
-const sec = ref(0)
+const milisec = ref(999)
+const sec = ref(4)
 const min = ref(0)
+let repeat = null
+let toggled = false
 
+function click(){
+    if(!toggled){
+        repeat = setInterval(countdown, 10)
+        toggled = true
+        console.log("Asdasd")
+    }
+}
+
+function countdown(){
+    milisec.value -= 10
+    if(milisec.value <= 0){
+        milisec.value = 999
+        sec.value --
+    }
+    if(sec.value <= 0 && milisec.value <= 11){
+        start()
+    }
+}
 function increment(){
-    milisec.value ++
+    milisec.value += 10
     if(milisec.value >= 1000){
         milisec.value = 0
         sec.value ++
@@ -31,16 +51,26 @@ function increment(){
         min.value ++
     }
 }
-
-
-
+function start(){
+    pause()
+    milisec.value = 0
+    sec.value = 0
+    min.value = 0
+    repeat = setInterval(increment, 10)
+}
+function pause(){
+    clearInterval(repeat)
+}
 //movement
 const pos1 = ref(0)
 const pos2 = ref(0)
 let d = false
 let arr = false
 
-const step = 10
+let step = 0
+setTimeout(() =>{
+    step = 10
+}, 5000)
 
 function keyPress(e) {
   if(e.key === 'd' && !d){
@@ -54,6 +84,9 @@ function keyPress(e) {
 }
 
 function keyUp(e){
+    if(pos1.value > 1200 || pos2.value > 1200){
+        pause()
+    }
     if(e.key === 'd' && !(pos1.value > 1200 || pos2.value > 1200)){
         d = false
     }
