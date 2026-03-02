@@ -19,10 +19,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const milisec = ref(0)
 const sec = ref(0)
 const min = ref(0)
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-async function increment(){
+
+function increment(){
     milisec.value ++
     if(milisec.value >= 1000){
         milisec.value = 0
@@ -33,10 +31,7 @@ async function increment(){
         min.value ++
     }
 }
-while(true){
-    increment()
-    await sleep(1000)
-}
+
 
 
 //movement
@@ -51,12 +46,10 @@ function keyPress(e) {
   if(e.key === 'd' && !d){
     pos1.value += step
     d = true
-    console.log(d)
   }
   if(e.key === 'ArrowRight' && !arr){
     pos2.value += step
     arr = true
-    console.log(arr)
   }
 }
 
