@@ -1,8 +1,10 @@
 <template>
-    <div>
-        <button> <RouterLink to="/">Back</RouterLink> </button>
-        <Duck width="100px" height="100px" class="p2" :skincolor="players[1].color"></Duck>
-        <choice v-for="color in colors" :key="color.name" :item="color" @select="updateStats(2, color.color)"/>
+    <div class="route"><RouterLink to="/">Back</RouterLink></div>
+    <div class="customize">
+        <Duck width="200px" height="200px" class="p1" :skincolor="players[1].color"></Duck>
+        <div class="choices">
+            <choice v-for="color in colors" :key="color.name" :item="color" @select="updateStats(2, color.color)"/>
+        </div>
     </div>
 </template>
 
@@ -26,5 +28,25 @@ const colors = [
 </script>
 
 <style scoped>
-
+.customize{
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    gap: 100px;
+    padding-top: 10%;
+}
+.choices{
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    gap: 10px;
+    float: right;
+}
+.route{
+  background-color: lightpink;
+  padding: 10px;
+  border-radius: 25px;
+  border: 5px solid black;
+  text-align: center;
+  font-size: larger;
+}
 </style>

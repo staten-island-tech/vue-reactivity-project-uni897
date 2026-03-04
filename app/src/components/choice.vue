@@ -1,5 +1,5 @@
 <template>
-    <button @click="emit('select', item)" class="choice">
+    <button @click="emit('select', item)" class="choice" :style="{ backgroundColor: item.color }">
         <h3>{{ item.name }}</h3>
     </button>
 </template>
@@ -19,5 +19,6 @@ const emit = defineEmits(["select"])
     height: 100px;
     width: 100px;
     border-radius: 100%;
+    border: 5px solid black;
 }
 </style>

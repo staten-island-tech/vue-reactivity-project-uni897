@@ -1,4 +1,4 @@
-<template class="github">
+<template>
   <h1>Duck Racing</h1>
   <div>
     <RouterLink class="route" to="/race">Play</RouterLink>
@@ -10,15 +10,19 @@
 <script setup> </script>
 
 <style scoped>
+
 h1{
   text-align: center;
+  font-size: 70px;
 }
 div{
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
+  font-size: 50px;
+  padding-top: 100px;
 }
 .route{
   background-color: lightpink;
