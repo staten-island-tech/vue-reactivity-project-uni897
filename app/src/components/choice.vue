@@ -1,5 +1,5 @@
 <template>
-    <button @click="emit('select', item)" class="choice" :style="{ backgroundColor: item.color }">
+    <button @click="emit('select', item)" class="choice" :style="{ backgroundColor: item.color, color: item.text }">
         <h3>{{ item.name }}</h3>
     </button>
 </template>

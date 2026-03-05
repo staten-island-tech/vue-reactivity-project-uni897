@@ -14,16 +14,17 @@ import Duck from "@/components/duck.vue"
 import { players, updateStats } from "@/state/players.js"
 
 const colors = [
-    {name: "Default", color: "#FFE67B"},
-    {name: "Red", color: "#ff0000"},
-    {name: "Green", color: "#008000"},
-    {name: "Blue", color: "#0000ff"},
-    {name: "Lime", color: "#bfff00"},
-    {name: "Purple", color: "#800080"},
-    {name: "Indigo", color: "#6f00fe"},
-    {name: "Salmon", color: "#fa8072"},
-    {name: "Orange", color: "#ffa500"},
-    {name: "Sky Blue", color: "#87cefa"},
+    {name: "Default", color: "#FFE67B", text: "#000"},
+    {name: "Red", color: "#ff0000", text: "#000"},
+    {name: "Green", color: "#008000", text: "#fff"},
+    {name: "Blue", color: "#0000ff", text: "#fff"},
+    {name: "Lime", color: "#bfff00", text: "#000"},
+    {name: "Purple", color: "#800080", text: "#fff"},
+    {name: "Indigo", color: "#6f00fe", text: "#fff"},
+    {name: "Salmon", color: "#fa8072", text: "#000"},
+    {name: "Orange", color: "#ffa500", text: "#000"},
+    {name: "Sky Blue", color: "#87cefa", text: "#000"},
+    {name: "Black", color: "#000", text: "#fff"},
 ]
 </script>
 
