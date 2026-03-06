@@ -1,12 +1,12 @@
 <template>
     <div>
         <button> <RouterLink to="/">Back</RouterLink> </button>
-        <h1>{{ min }}:{{ sec }}:{{ milisec }}</h1>
+        <h1 class="timer">{{ min }}:{{ sec }}:{{ milisec }}</h1>
         <button @click="click">Start</button>
         <Duck :pos="pos1" width="100px" height="100px" class="p1" :skincolor="players[0].color"></Duck>
         <Duck :pos="pos2" width="100px" height="100px" class="p2" :skincolor="players[1].color"></Duck>
-        <h2 v-if="pos1 > 1200">Player 1 wins!</h2>
-        <h2 v-if="pos2 > 1200">Player 2 wins!</h2>
+        <h2 v-if="pos1 >= 1200">Player 1 wins!</h2>
+        <h2 v-if="pos2 >= 1200">Player 2 wins!</h2>
     </div>
 </template>
 
@@ -26,7 +26,6 @@ function click(){
     if(!toggled){
         repeat = setInterval(countdown, 10)
         toggled = true
-        console.log("Asdasd")
     }
 }
 
@@ -57,10 +56,14 @@ function start(){
     sec.value = 0
     min.value = 0
     repeat = setInterval(increment, 10)
+    step = 10
 }
 function pause(){
     clearInterval(repeat)
 }
+
+
+
 //movement
 const pos1 = ref(0)
 const pos2 = ref(0)
@@ -68,9 +71,6 @@ let d = false
 let arr = false
 
 let step = 0
-setTimeout(() =>{
-    step = 10
-}, 5000)
 
 function keyPress(e) {
   if(e.key === 'd' && !d){
@@ -84,13 +84,13 @@ function keyPress(e) {
 }
 
 function keyUp(e){
-    if(pos1.value > 1200 || pos2.value > 1200){
+    if(pos1.value >= 1200 || pos2.value >= 1200){
         pause()
     }
-    if(e.key === 'd' && !(pos1.value > 1200 || pos2.value > 1200)){
+    if(e.key === 'd' && !(pos1.value >= 1200 || pos2.value >= 1200)){
         d = false
     }
-    if(e.key === 'ArrowRight' && !(pos1.value > 1200 || pos2.value > 1200)){
+    if(e.key === 'ArrowRight' && !(pos1.value >= 1200 || pos2.value >= 1200)){
         arr = false
     }
 }
@@ -106,5 +106,16 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-
+button{
+  background-color: lightpink;
+  padding: 10px;
+  border-radius: 25px;
+  border: 5px solid black;
+  text-align: center;
+  font-size: larger;
+  cursor: pointer;
+}
+.timer{
+    text-align: center;
+}
 </style>
